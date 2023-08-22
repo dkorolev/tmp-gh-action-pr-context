@@ -142,3 +142,11 @@ Lessons learned from PR5:
 
 * `${{ github.repository_owner }}` is still the best way to get the owner. :-(
 * Just "Discussions" is not enough permissions for the PAT token, adding "Pull Requests".
+
+## PR6
+
+A clean test for top-level PR comments.
+
+Initial comment, on PR creation: [check](https://github.com/dkorolev/tmp-gh-action-pr-context/pull/6#issuecomment-1688239058).
+
+Second comment, on the new commit added: [check](https://github.com/dkorolev/tmp-gh-action-pr-context/pull/6#issuecomment-1688240664).
