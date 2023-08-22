@@ -90,3 +90,10 @@ Lessons learned from PR2.
 
 1. Need to change `s/base/head/` for `"opened"`.
 2. The `v3` of the `actions/checkout` action yields no warnings.
+
+## PR3
+
+Testing end-to-end, fingers crossed.
+
+From the [first action run](https://github.com/dkorolev/tmp-gh-action-pr-context/actions/runs/5939380782/job/16105646687), the commit ID is correct: `fb1c24d1d9d474f281886732d84f80397922c733`.
+From the [second action run](https://github.com/dkorolev/tmp-gh-action-pr-context/actions/runs/5939400873/job/16105704900), the commit ID is correct: `8ccc473c4f413ba092c303a518a43846bf546e55`.
