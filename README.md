@@ -7,6 +7,7 @@ A quick playground to solve the problem of extracting the data from the `.contex
 Testing the initial action.
 
 The hash of `PR1 commit1` is `876f123f51efe07e99c87209fe5f01692b37b099`.
+
 The hash of `PR1 commit2` is `4d9540e555f92800d237d012d732f138f60397b8`.
 
 From the [first action run](https://github.com/dkorolev/tmp-gh-action-pr-context/actions/runs/5938948010/job/16104386303):
@@ -52,6 +53,7 @@ Lessons learned from PR1.
 Testing with `v3` of `actions/checkout`.
 
 The hash of `PR2 commit1` is `2d7a6e2c4970be5cd68f9d9776b46a2e688c0ad8`.
+
 The hash of `PR2 commit2` is `e5d43879a4e32fc39769b765ceb0587719fc705a`.
 
 From the [first action run](https://github.com/dkorolev/tmp-gh-action-pr-context/actions/runs/5939156679/job/16104991679):
@@ -96,4 +98,5 @@ Lessons learned from PR2.
 Testing end-to-end, fingers crossed.
 
 From the [first action run](https://github.com/dkorolev/tmp-gh-action-pr-context/actions/runs/5939380782/job/16105646687), the commit ID is correct: `fb1c24d1d9d474f281886732d84f80397922c733`.
+
 From the [second action run](https://github.com/dkorolev/tmp-gh-action-pr-context/actions/runs/5939400873/job/16105704900), the commit ID is correct: `8ccc473c4f413ba092c303a518a43846bf546e55`.
