@@ -49,7 +49,7 @@ jobs:
                       repo: context.payload.pull_request.base.repo.name,
                       commit_id: commit_sha,
                       path: filename,
-                      line: 177,  // NOTE(dkorolev) - this is a random line, replace by your logic, of course.
+                      line: 40,  // NOTE(dkorolev) - this is a random line, replace by your logic, of course.
                       body: 'You are doing great, keep it up!'
                     });
                   } catch(e) {
