@@ -8,6 +8,8 @@ Leaving PR comments, both per individual changed files and overall for the PR, i
 
 This requires a custom Github token with special permissions, "Pull Requests" and "Discussions".
 
+The solution only works on pull requests created from within the same repo. When opening a PR from a fork, the token/secret from that fork is used, and, alas, it is not there.
+
 There are several pieces of ugliness to work through. The most notable ones are:
 
 * The "calling convention" of how the per-PR Github action is invoked is quite different between the "PR opened" trigger and the "new commit added to an existing PR" trigger.
@@ -34,6 +36,12 @@ TL;DR:
 * "Secrets and variables" -> "Actions".
 * "New repository secret".
 * Name: `COMMENTING_GITHUB_TOKEN`, value: the freshly created token.
+
+## Note on Forks
+
+It is possible to enable running actions on forks, ref. "Fork pull request workflows from outside collaborators" from [here](https://github.com/dkorolev/tmp-gh-action-pr-context/settings/actions), [more info](https://docs.github.com/en/actions/managing-workflow-runs/approving-workflow-runs-from-public-forks).
+
+This will not work "as is" though, as the Action spawned by a pull request from a work will be using Action Secrets from the work. Alas.
 
 ## PR1
 
