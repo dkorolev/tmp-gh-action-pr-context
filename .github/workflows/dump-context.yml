@@ -75,7 +75,7 @@ jobs:
                         body: 'You are doing great, keep it up!'
                       });
                     } catch(e) {
-                      console.log(`EXCEPTION - ${JSON.stringify(e)}`.`);
+                      console.log(`EXCEPTION - ${JSON.stringify(e)}.`);
                     }
 
                     // Out of diff.
