@@ -15,42 +15,47 @@ jobs:
       - name: "github-script"
         uses: actions/github-script@v6
         env:
-          GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
         with:
           github-token: ${{ secrets.COMMENTING_GITHUB_TOKEN }}
           script: |
             if (context.eventName === 'pull_request') {
-              const repo_full_path_split = process.env.GITHUB_REPOSITORY.split('/');
-              const repo_name = repo_full_path_split[repo_full_path_split.length - 1];
               let text = '';
-              let commmit_sha = '';
+              let commit_sha = '';
               if (context.payload.action === 'opened') {
-                commmit_sha = context.payload.pull_request.head.sha;
+                commit_sha = context.payload.pull_request.head.sha;
                 text = `Thank you for submitting a PR starting from \`${commit_sha}\`.`;
               } else if (context.payload.action === 'synchronize') {
                 commit_sha = context.payload.after;
                 text = `Thank you for submitting commit \`${commit_sha}\`.`;
               }
+
               if (text !== '') {
                 const { data: files } = await github.rest.pulls.listFiles({
                   pull_number: context.payload.number,
                   owner: process.env.GITHUB_REPOSITORY_OWNER,
-                  repo: repo_name
+                  repo: context.payload.pull_request.base.repo.name
                 });
+
                 filenames = [];
                 for (const files_entry of files) {
                   filenames.push(files_entry.filename);
                 }
                 for (const filename of filenames) {
-                  await github.rest.pulls.createReviewComment({
-                    pull_number: context.payload.number,
-                    owner: process.env.GITHUB_REPOSITORY_OWNER,
-                    repo: context.payload.pull_request.base.repo.name,
-                    commit_id: commmit_sha,
-                    path: filename,
-                    body: 'You are doing great, keep it up!'
-                  });
+                  try {
+                    await github.rest.pulls.createReviewComment({
+                      pull_number: context.payload.number,
+                      owner: process.env.GITHUB_REPOSITORY_OWNER,
+                      repo: context.payload.pull_request.base.repo.name,
+                      commit_id: commit_sha,
+                      path: filename,
+                      line: 160,
+                      body: 'You are doing great, keep it up!'
+                    });
+                  } catch(e) {
+                    // NOTE(dkorolev) - The "pull_request_review_thread.line must be part of the diff" error is OK!
+                    console.log(`EXCEPTION - ${e}.`);
+                  }
                 }
                 await github.rest.issues.createComment({
                   issue_number: context.payload.number,

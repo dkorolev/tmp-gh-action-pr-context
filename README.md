@@ -150,3 +150,12 @@ A clean test for top-level PR comments.
 Initial comment, on PR creation: [check](https://github.com/dkorolev/tmp-gh-action-pr-context/pull/6#issuecomment-1688239058).
 
 Second comment, on the new commit added: [check](https://github.com/dkorolev/tmp-gh-action-pr-context/pull/6#issuecomment-1688240664).
+
+## PR7
+
+Trying per-file PR comments as well.
+
+Lessons learned from PR7:
+
+1. It's enough to have two permissions, "Pull Requests", and "Discussions".
+2. The `"pull_request_review_thread.line must be part of the diff"` error is real. It can be ignored though.
