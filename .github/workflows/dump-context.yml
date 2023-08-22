@@ -1,11 +1,11 @@
-name: Dump GH Contexts for PR Actions
+name: Auto-Commenter
 
 on:
   pull_request:
     types: [opened, synchronize]
 
 jobs:
-  tmp:
+  auto-commenter:
     runs-on: ubuntu-latest
     steps:
       - name: "git clone"
@@ -49,7 +49,7 @@ jobs:
                       repo: context.payload.pull_request.base.repo.name,
                       commit_id: commit_sha,
                       path: filename,
-                      line: 160,
+                      line: 177,  // NOTE(dkorolev) - this is a random line, replace by your logic, of course.
                       body: 'You are doing great, keep it up!'
                     });
                   } catch(e) {
