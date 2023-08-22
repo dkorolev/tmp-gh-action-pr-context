@@ -1,0 +1,22 @@
+name: Dump GH Contexts for PR Actions
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  tmp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "git clone"
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: "git log"
+        run: git log
+      - name: "github-script"
+        uses: actions/github-script@v6
+        with:
+          script: |
+            console.log(`===\nFULL CONTEXT\n===\n`);
+            console.log(JSON.stringify(context));
