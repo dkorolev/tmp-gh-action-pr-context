@@ -146,3 +146,5 @@ Lessons learned from PR5:
 ## PR6
 
 A clean test for top-level PR comments.
+
+Initial comment, on PR creation: [check](https://github.com/dkorolev/tmp-gh-action-pr-context/pull/6#issuecomment-1688239058).
