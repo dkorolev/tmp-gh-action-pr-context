@@ -24,7 +24,7 @@ jobs:
               const repo_full_path_split = process.env.GITHUB_REPOSITORY.split('/');
               const repo_name = repo_full_path_split[repo_full_path_split.length - 1];
               let text = '';
-              let commmit_sha = '';
+              let commit_sha = '';
               if (context.payload.action === 'opened') {
                 commmit_sha = context.payload.pull_request.head.sha;
                 text = `Thank you for submitting a PR starting from \`${commit_sha}\`.`;
