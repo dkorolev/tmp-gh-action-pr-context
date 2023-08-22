@@ -11,9 +11,7 @@ jobs:
       - name: "git clone"
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
-      - name: "git log"
-        run: git log
+          fetch-depth: 1
       - name: "github-script"
         uses: actions/github-script@v6
         with:
