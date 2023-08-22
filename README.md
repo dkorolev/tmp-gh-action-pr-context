@@ -52,6 +52,7 @@ Lessons learned from PR1.
 Testing with `v3` of `actions/checkout`.
 
 The hash of `PR2 commit1` is `2d7a6e2c4970be5cd68f9d9776b46a2e688c0ad8`.
+The hash of `PR2 commit2` is `e5d43879a4e32fc39769b765ceb0587719fc705a`.
 
 From the [first action run](https://github.com/dkorolev/tmp-gh-action-pr-context/actions/runs/5939156679/job/16104991679):
 
@@ -69,6 +70,23 @@ cat c1.json | jq .payload.pull_request.head.sha
 "2d7a6e2c4970be5cd68f9d9776b46a2e688c0ad8"
 ```
 
+From the [second action run](https://github.com/dkorolev/tmp-gh-action-pr-context/actions/runs/5939260109/job/16105302587):
+
+```
+cat c2.json | jq .eventName
+"pull_request"
+
+cat c2.json | jq .payload.number
+2
+
+cat c2.json | jq .payload.action
+"synchronize"
+
+cat c2.json | jq .payload.after
+"e5d43879a4e32fc39769b765ceb0587719fc705a"
+```
+
 Lessons learned from PR2.
 
 1. Need to change `s/base/head/` for `"opened"`.
+2. The `v3` of the `actions/checkout` action yields no warnings.
