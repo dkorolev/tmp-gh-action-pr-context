@@ -174,4 +174,4 @@ Lessons learned from PR7:
 
 ## PR8
 
-A clean test.
+A clean test. And it passed!
