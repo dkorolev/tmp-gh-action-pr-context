@@ -120,3 +120,4 @@ Trying top-level commenting on PRs with a `COMMENTING_GITHUB_TOKEN` Github secre
 Lessons learned from PR5:
 
 * `${{ github.repository_owner }}` is still the best way to get the owner. :-(
+* Just "Discussions" is not enough permissions for the PAT token, adding "Pull Requests".
