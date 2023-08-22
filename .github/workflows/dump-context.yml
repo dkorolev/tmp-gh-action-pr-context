@@ -69,6 +69,7 @@ jobs:
                       repo: context.payload.pull_request.base.repo.name,
                       commit_id: commit_sha,
                       path: filename,
+                      line: 1,
                       body: 'You are doing great, keep it up!'
                     })}`);
 
@@ -78,6 +79,7 @@ jobs:
                       repo: context.payload.pull_request.base.repo.name,
                       commit_id: commit_sha,
                       path: filename,
+                      line: 1,
                       body: 'You are doing great, keep it up!'
                     });
                   }
