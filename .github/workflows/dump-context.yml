@@ -15,12 +15,20 @@ jobs:
       - name: "github-script"
         uses: actions/github-script@v6
         with:
+          github-token: ${{ secrets.COMMENTING_GITHUB_TOKEN }}
           script: |
             if (context.eventName === 'pull_request') {
-              console.log(`PR - number ${context.payload.number}`);
+              let text = '';
               if (context.payload.action === 'opened') {
-                console.log(`PR - new PR opened, HEAD is ${context.payload.pull_request.head.sha}`);
+                text = `Thank you for submitting a PR starting from \`${context.payload.pull_request.head.sha}\`.`;
               } else if (context.payload.action === 'synchronize') {
-                console.log(`PR - new commits pushed, HEAD is ${context.payload.after}`);
+                text = `Thank you for submitting commit \`${context.payload.after}\`.`;
+              }
+              if (text !== '') {
+                await github.rest.issues.createComment({
+                  issue_number: context.payload.number,
+                  repo: context.payload.pull_request.base.repo.name,
+                  body: text
+                });
               }
             }
