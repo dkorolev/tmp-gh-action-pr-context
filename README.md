@@ -90,3 +90,7 @@ Lessons learned from PR2.
 
 1. Need to change `s/base/head/` for `"opened"`.
 2. The `v3` of the `actions/checkout` action yields no warnings.
+
+## PR3
+
+Testing end-to-end, fingers crossed.
