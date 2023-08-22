@@ -63,25 +63,35 @@ jobs:
                 }
                 for (const filename of filenames) {
                   if (filename.endsWith('README.md')) {
-                    console.log(`INSIDE LOOP - ${JSON.stringify({
-                      pull_number: context.payload.number,
-                      owner: process.env.GITHUB_REPOSITORY_OWNER,
-                      repo: context.payload.pull_request.base.repo.name,
-                      commit_id: commit_sha,
-                      path: filename,
-                      line: 1,
-                      body: 'You are doing great, keep it up!'
-                    })}`);
+                    // In diff.
+                    try {
+                      await github.rest.pulls.createReviewComment({
+                        pull_number: context.payload.number,
+                        owner: process.env.GITHUB_REPOSITORY_OWNER,
+                        repo: context.payload.pull_request.base.repo.name,
+                        commit_id: commit_sha,
+                        path: filename,
+                        line: 158,
+                        body: 'You are doing great, keep it up!'
+                      });
+                    } catch(e) {
+                      console.log(`EXCEPTION - ${JSON.stringify(e)}`.`);
+                    }
 
-                    await github.rest.pulls.createReviewComment({
-                      pull_number: context.payload.number,
-                      owner: process.env.GITHUB_REPOSITORY_OWNER,
-                      repo: context.payload.pull_request.base.repo.name,
-                      commit_id: commit_sha,
-                      path: filename,
-                      line: 1,
-                      body: 'You are doing great, keep it up!'
-                    });
+                    // Out of diff.
+                    try {
+                      await github.rest.pulls.createReviewComment({
+                        pull_number: context.payload.number,
+                        owner: process.env.GITHUB_REPOSITORY_OWNER,
+                        repo: context.payload.pull_request.base.repo.name,
+                        commit_id: commit_sha,
+                        path: filename,
+                        line: 1,
+                        body: 'You are doing great, keep it up!'
+                      });
+                    } catch(e) {
+                      console.log(`EXCEPTION - ${JSON.stringify(e)}`.`);
+                    }
                   }
                 }
                 await github.rest.issues.createComment({

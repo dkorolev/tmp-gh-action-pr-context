@@ -154,3 +154,7 @@ Second comment, on the new commit added: [check](https://github.com/dkorolev/tmp
 ## PR7
 
 Trying per-file PR comments as well.
+
+Lessons learned from PR7:
+
+...
