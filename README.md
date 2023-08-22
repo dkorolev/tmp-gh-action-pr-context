@@ -112,3 +112,12 @@ Trying the shallow clone for real.
 Verdict: `fetch-depth` of `1` is indeed the shallow clone.
 
 The SHA of the HEAD commit is still off, but PRs one to three took care of this.
+
+## PR5
+
+Trying top-level commenting on PRs with a `COMMENTING_GITHUB_TOKEN` Github secret.
+
+Lessons learned from PR5:
+
+* `${{ github.repository_owner }}` is still the best way to get the owner. :-(
+* Just "Discussions" is not enough permissions for the PAT token, adding "Pull Requests".
