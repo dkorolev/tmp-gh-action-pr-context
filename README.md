@@ -2,6 +2,27 @@
 
 A quick playground to solve the problem of extracting the data from the `.context` of PR-related Github actions once and for all.
 
+## Token Setup
+
+In order for the runner of the Github action to be able to comment on pull requests, a token with elevated permissions has to be created.
+
+(Why a default `GITHUB_TOKEN` from the runner of the action is insufficient to leave PR comments is beyond me.)
+
+TL;DR:
+
+* "Setting -> Developer Settings", [link](https://github.com/settings/apps).
+* "Personal Access Tokens" -> Fine-grained tokens (Beta)", [link](https://github.com/settings/tokens?type=beta).
+* Generate new token.
+* Enter OTP if you have it configured (and you better do!)
+* "Only select repositories" -> Choose this particular repository.
+* "Repository permission" -> "Pull Requests" -> "Read and write".
+* "Repository permission" -> "Discussions" -> "Read and write".
+* "Generate Token", and save it somewhere temporarily.
+* Now go to this repo's settings, [link](https://github.com/dkorolev/tmp-gh-action-pr-context/settings) to this repo, change accordingly.
+* "Secrets and variables" -> "Actions".
+* "New repository secret".
+* Name: `COMMENTING_GITHUB_TOKEN`, value: the freshly created token.
+
 ## PR1
 
 Testing the initial action.
