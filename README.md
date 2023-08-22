@@ -94,3 +94,5 @@ Lessons learned from PR2.
 ## PR3
 
 Testing end-to-end, fingers crossed.
+
+From the [first action run](https://github.com/dkorolev/tmp-gh-action-pr-context/actions/runs/5939380782/job/16105646687), the commit ID is correct: `fb1c24d1d9d474f281886732d84f80397922c733`.
