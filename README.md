@@ -45,4 +45,8 @@ Lessons learned from PR1.
 
 1. There are indeed differences between `"opened"` and `"synchronize"`.
 2. The `HEAD` commit is totally broken, may be related to (3).
-2. Need to upgrade the version of `actions/checkout@v2`, and need to properly do a shallow clone.
+3. Need to upgrade the version of `actions/checkout@v2`, and need to properly do a shallow clone.
+
+# PR2
+
+Testing with `v3` of `actions/checkout`.
