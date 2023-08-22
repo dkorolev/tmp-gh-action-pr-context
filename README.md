@@ -157,4 +157,5 @@ Trying per-file PR comments as well.
 
 Lessons learned from PR7:
 
-...
+1. It's enough to have two permissions, "Pull Requests", and "Discussions".
+2. The `"pull_request_review_thread.line must be part of the diff"` error is real. It can be ignored though.
