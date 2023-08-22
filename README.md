@@ -6,7 +6,7 @@ A quick playground to solve the problem of extracting the data from the `.contex
 
 Leaving PR comments, both per individual changed files and overall for the PR, is doable.
 
-This requires a custom Github token with special permissions, "Pull Requests" and "Discussions".
+This requires a custom Github token with special permissions, "Pull Requests".
 
 The solution only works on pull requests created from within the same repo. When opening a PR from a fork, the token/secret from that fork is used, and, alas, it is not there.
 
@@ -30,7 +30,6 @@ TL;DR:
 * Enter OTP if you have it configured (and you better do!)
 * "Only select repositories" -> Choose this particular repository.
 * "Repository permission" -> "Pull Requests" -> "Read and write".
-* "Repository permission" -> "Discussions" -> "Read and write".
 * "Generate Token", and save it somewhere temporarily.
 * Now go to this repo's settings, [link](https://github.com/dkorolev/tmp-gh-action-pr-context/settings) to this repo, change accordingly.
 * "Secrets and variables" -> "Actions".
@@ -161,7 +160,8 @@ Trying top-level commenting on PRs with a `COMMENTING_GITHUB_TOKEN` Github secre
 Lessons learned from PR5:
 
 * `${{ github.repository_owner }}` is still the best way to get the owner. :-(
-* Just "Discussions" is not enough permissions for the PAT token, adding "Pull Requests".
+* "Discussions" is not the right permission for the PAT token, need to have "Pull Requests".
+* (Added later: And "Pull Requests" alone is actually sufficient.)
 
 ## PR6
 
@@ -177,7 +177,7 @@ Trying per-file PR comments as well.
 
 Lessons learned from PR7:
 
-1. It's enough to have two permissions, "Pull Requests", and "Discussions".
+1. It's enough to have just the "Pull Requests" permission for the token.
 2. The `"pull_request_review_thread.line must be part of the diff"` error is real. It can be ignored though.
 
 ## PR8
