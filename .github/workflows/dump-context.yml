@@ -26,7 +26,7 @@ jobs:
               let text = '';
               let commit_sha = '';
               if (context.payload.action === 'opened') {
-                commmit_sha = context.payload.pull_request.head.sha;
+                commit_hash = context.payload.pull_request.head.sha;
                 text = `Thank you for submitting a PR starting from \`${commit_sha}\`.`;
               } else if (context.payload.action === 'synchronize') {
                 commit_sha = context.payload.after;
@@ -47,7 +47,7 @@ jobs:
                     pull_number: context.payload.number,
                     owner: process.env.GITHUB_REPOSITORY_OWNER,
                     repo: context.payload.pull_request.base.repo.name,
-                    commit_id: commmit_sha,
+                    commit_id: commit_hash,
                     path: filename,
                     body: 'You are doing great, keep it up!'
                   });
