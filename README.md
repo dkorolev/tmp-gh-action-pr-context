@@ -2,6 +2,18 @@
 
 A quick playground to solve the problem of extracting the data from the `.context` of PR-related Github actions once and for all.
 
+## Executive Summary
+
+Leaving PR comments, both per individual changed files and overall for the PR, is doable.
+
+This requires a custom Github token with special permissions, "Pull Requests" and "Discussions".
+
+There are several pieces of ugliness to work through. The most notable ones are:
+
+* The "calling convention" of how the per-PR Github action is invoked is quite different between the "PR opened" trigger and the "new commit added to an existing PR" trigger.
+* Collecting the data required to leave the comment is nontrivial. Some of it is not even in the `context.` provided.
+* The "line must be part of the diff" error is real, and the only way to tell which lines are parts of the diff is to parse the `.patch` body. This error can "just" be caught and ignored though.
+
 ## Token Setup
 
 In order for the runner of the Github action to be able to comment on pull requests, a token with elevated permissions has to be created.
@@ -159,3 +171,7 @@ Lessons learned from PR7:
 
 1. It's enough to have two permissions, "Pull Requests", and "Discussions".
 2. The `"pull_request_review_thread.line must be part of the diff"` error is real. It can be ignored though.
+
+## PR8
+
+A clean test. And it passed!
